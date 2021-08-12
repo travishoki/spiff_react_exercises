@@ -16,10 +16,7 @@ These coding exercises are meant to help Spiff gain insight into how you would t
   git remote add origin https://github.com/[URL TO YOUR GIT REPO]
   git push origin master
 ```
-3. Switch to the correct Node version. If using `nvm` run:
-```bash
-  nvm run use
-```
+3. Switch to the correct Node version. If using `nvm` run: `nvm run use`
 4. Retreive dependencies: `yarn`, and start the dev server: `yarn start`. The app should open on http://localhost:3000
 5. This will take you to an index that lists the exercises. For each exercise:
     - click the exercise link from the index page

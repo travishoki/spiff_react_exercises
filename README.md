@@ -7,6 +7,12 @@ These coding exercises are meant to help Spiff gain insight into how you would t
 
 ### Instructions
 1. Clone the repo **(don't fork)**
+```bash
+  git clone https://github.com/SpiffInc/spiff_react_exercises.git
+  git remote rename origin upstream 
+  git remote add origin https://github.com/[URL TO YOUR GIT REPO]
+  git push origin master
+```
 2. Point the remote origin to a new repo under your account 
 3. Retreive dependencies: `yarn`, and start the dev server: `yarn start`. The app should open on http://localhost:3000
 4. This will take you to an index that lists the exercises. For each exercise:

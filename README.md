@@ -21,15 +21,15 @@ These coding exercises are meant to help Spiff gain insight into how you would t
 5. This will take you to an index that lists the exercises. For each exercise:
     - click the exercise link from the index page
     - v1:
-      - review v1 specs https://github.com/travishoki/spiff_react_exercises/blob/master/src/docs/ProgressBar.md
-      - create a new branch off of master
-      - complete the `Solution` component for the exercise (the ProgressBar exercise is found in ProgressBar.js)
-      - create a pull request on your repo when finished
+      - Review v1 specs https://github.com/travishoki/spiff_react_exercises/blob/master/src/docs/ProgressBar.md
+      - Create a new branch off of master
+      - Complete the `Solution` component for the exercise (the ProgressBar exercise is found in ProgressBar.js)
+      - Create a pull request on your repo when finished
     - v2:
-      - review v2 specs: https://github.com/travishoki/spiff_react_exercises/blob/master/src/docs/Parser.md
-      - create a new branch off of v1
-      - build on v1 to meet v2 requirements
-      - create a pull request on your repo when finished
+      - Review v2 specs: https://github.com/travishoki/spiff_react_exercises/blob/master/src/docs/Parser.md
+      - Create a new branch off of v1
+      - Build on v1 to meet v2 requirements
+      - Create a pull request on your repo when finished
 6. Send a link to your repo to casey@spiff.com
 
 ### Guidelines

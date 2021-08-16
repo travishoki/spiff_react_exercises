@@ -22,32 +22,29 @@ export default ProgressBarExercise;
 
 // ----------------------------------------------------------------------------------
 
+const INTERVAL = 100;
+
 const Solution = () => {
   const [ isLoading, setILoading ] = useState(false);
   const [ percentLoaded, setPercentLoaded ] = useState(0);
 
-  const {
-    clearTimer,
-    startTimer,
-  } = useProgressLoader(setPercentLoaded);
+  const { startLoader } = useProgressLoader(setPercentLoaded);
 
   const startRequest = () => {
-    startTimer({
+    startLoader({
       duration: 1500,
       from: 0,
-      interval: 100,
+      interval: INTERVAL,
       to: 90,
     });
     setILoading(true);
   };
 
   const finishRequest = () => {
-    clearTimer();
-
-    startTimer({
+    startLoader({
       duration: 1000,
       from: percentLoaded,
-      interval: 100,
+      interval: INTERVAL,
       to: 100,
       callback: () => setILoading(false),
     });

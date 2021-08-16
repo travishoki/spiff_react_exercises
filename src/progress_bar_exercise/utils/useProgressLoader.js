@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useProgressLoader = (setPercentLoaded) => {
+const useProgressLoader = (setPercentCallback) => {
   const [ timer, setTimer ] = useState();
 
   useEffect(() => {
@@ -9,13 +9,14 @@ const useProgressLoader = (setPercentLoaded) => {
     };
   }, [ timer ]);
 
-  const startTimer = ({
+  const startLoader = ({
     callback,
     duration,
     from,
     interval,
     to,
   }) => {
+    clearTimer();
     const VALUE_DIFF = to - from;
     const TICK_COUNT = duration / interval;
     const PROGRESS_PER_TICK = VALUE_DIFF / TICK_COUNT;
@@ -23,7 +24,7 @@ const useProgressLoader = (setPercentLoaded) => {
     let currentValue = from;
     let currentTime = 0;
 
-    setPercentLoaded(from);
+    setPercentCallback(from);
 
     const newTimer = setInterval(() => {
       const diff = to - currentValue;
@@ -33,7 +34,7 @@ const useProgressLoader = (setPercentLoaded) => {
       } else {
         currentValue += PROGRESS_PER_TICK;
       }
-      setPercentLoaded(currentValue);
+      setPercentCallback(currentValue);
 
       currentTime += interval;
 
@@ -46,11 +47,12 @@ const useProgressLoader = (setPercentLoaded) => {
     setTimer(newTimer);
   };
 
-  const clearTimer = () => clearInterval(timer);
+  const clearTimer = () => {
+    if (timer) clearInterval(timer);
+  };
 
   return {
-    startTimer,
-    clearTimer,
+    startLoader,
   };
 };
 

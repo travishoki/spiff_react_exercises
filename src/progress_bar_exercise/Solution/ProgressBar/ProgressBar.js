@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import './ProgressBar.scss';
 
+import { getIsVisibleClass } from './utils';
+
 const ProgressBar = ({
   isVisible,
   percent,
 }) => {
-  const visibleClass = isVisible ? 'visible' : '';
+  const visibleClass = getIsVisibleClass(isVisible);
   
   return (
     <div

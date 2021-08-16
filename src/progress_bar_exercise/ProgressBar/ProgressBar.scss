@@ -1,0 +1,14 @@
+$grey-lt: #eee;
+
+.progress-bar-container {
+  background-color: $grey-lt;
+  border-radius: 3px;
+  height: 6px;
+  margin-bottom: 10px;
+  width: 100%;
+
+  .progress-bar {
+    background-image: linear-gradient(to right, orange, red);
+    height: 6px;
+  }
+}

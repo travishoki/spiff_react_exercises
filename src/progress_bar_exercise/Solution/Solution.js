@@ -10,11 +10,13 @@ const INTERVAL = 100;
 const Solution = () => {
   const [ isLoading, setILoading ] = useState(false);
   const [ percentLoaded, setPercentLoaded ] = useState(0);
+  const [ hasClickedFinish, setHasClickedFinish ] = useState(false);
 
   const { startLoader } = useProgressLoader(setPercentLoaded);
 
   const startRequest = () => {
     setILoading(true);
+
     startLoader({
       duration: 1500,
       from: 0,
@@ -24,12 +26,17 @@ const Solution = () => {
   };
 
   const finishRequest = () => {
+    setHasClickedFinish(true);
+
     startLoader({
       duration: 1000,
       from: percentLoaded,
       interval: INTERVAL,
       to: 100,
-      callback: () => setILoading(false),
+      callback: () => {
+        setILoading(false);
+        setHasClickedFinish(false);
+      },
     });
   };
 
@@ -45,7 +52,7 @@ const Solution = () => {
         text={isLoading ? 'Loading...' : 'Start Request'}
       />
 
-      {isLoading && (
+      {isLoading && !hasClickedFinish && (
         <Button
           onClick={finishRequest}
           text="Finish Request"

@@ -18,7 +18,7 @@ const ProgressBar = ({
       <div
         className="progress-bar"
         style={{
-          width: `${percent}%`,
+          width: `${percent}%`, // This "width" will visually show the progress percentage
         }}
       />
     </div>

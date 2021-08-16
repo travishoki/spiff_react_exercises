@@ -12,7 +12,7 @@ const useAnimateValue = () => {
 
   useEffect(() => {
     return () => {
-      clearInterval(timer);
+      clearInterval(timer); // Clear the interval when unmounting
     };
   }, [ timer ]);
 
@@ -26,8 +26,8 @@ const useAnimateValue = () => {
   }) => {
     clearTimer();
     const VALUE_DIFF = to - from;
-    const TICK_COUNT = duration / interval;
-    const PROGRESS_PER_TICK = VALUE_DIFF / TICK_COUNT;
+    const TICK_COUNT = duration / interval; // Amount of ticket to get to the value goal
+    const PROGRESS_PER_TICK = VALUE_DIFF / TICK_COUNT; // Value that the percentage will increase per interval
 
     let currentValue = from;
     let currentTime = 0;
@@ -38,21 +38,21 @@ const useAnimateValue = () => {
       const diff = to - currentValue;
 
       if (diff < PROGRESS_PER_TICK) {
-        currentValue = to;
+        currentValue = to; // End exactly on the desired "to"
       } else {
         currentValue += PROGRESS_PER_TICK;
       }
-      intervalCallback(currentValue);
+      intervalCallback(currentValue); // Return the current value on each interval
 
-      currentTime += interval;
+      currentTime += interval; // Keep track of time
 
       if (currentTime >= duration || currentValue >= to) {
         clearInterval(newTimer);
-        callback && callback();
+        callback && callback(); // Completion callback
       }
     }, interval);
 
-    setTimer(newTimer);
+    setTimer(newTimer); // timer stored for cleanup
   };
 
   const clearTimer = () => {

@@ -12,7 +12,7 @@ const useDelay = () => {
 
   useEffect(() => {
     return () => {
-      clearInterval(timer);
+      clearInterval(timer); // Clear the interval when unmounting
     };
   }, [ timer ]);
 
@@ -22,7 +22,7 @@ const useDelay = () => {
       clearInterval(newTimer);
     }, duration);
 
-    setTimer(newTimer);
+    setTimer(newTimer); // timer stored for cleanup
   };
 
   return {

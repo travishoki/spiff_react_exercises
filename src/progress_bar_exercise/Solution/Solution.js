@@ -15,7 +15,9 @@ const Solution = () => {
   const [ isProgressBarVisible, setIsProgressBarVisible ] = useState(false);
   const [ percentLoaded, setPercentLoaded ] = useState(0);
 
+  // Custom hook for delaying a callback
   const { startDelay } = useDelay(setPercentLoaded);
+  // Custom hook for animating a value
   const { startAnimate } = useAnimateValue();
 
   const startRequest = () => {
@@ -27,7 +29,7 @@ const Solution = () => {
       from: 0,
       interval: INTERVAL,
       to: 90,
-      intervalCallback: setPercentLoaded,
+      intervalCallback: setPercentLoaded, // This callback will update the loader progress
     });
   };
 
@@ -39,12 +41,12 @@ const Solution = () => {
       from: percentLoaded,
       interval: INTERVAL,
       to: 100,
-      intervalCallback: setPercentLoaded,
+      intervalCallback: setPercentLoaded, // This callback will update the loader progress
       callback: () => {
         setIsComplete(true);
         setILoading(false);
 
-        startDelay(3000, () => {
+        startDelay(3000, () => { // After 3 seconds make the progress bar disapear
           setIsProgressBarVisible(false)
           startDelay(500, resetLoader);
         });
@@ -53,6 +55,7 @@ const Solution = () => {
   };
 
   const resetLoader = () => {
+    // Reseting local state so the progress bar functions can be called again
     setHasClickedFinish(false);
     setIsComplete(false);
   };

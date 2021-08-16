@@ -7,7 +7,7 @@ $grey-lt: #eee;
   margin-bottom: 10px;
   width: 100%;
   opacity: 0;
-  transition: opacity 1s linear;
+  transition: opacity .5s linear;
 
   &.visible {
     opacity: 1;

@@ -3,16 +3,19 @@ import React, { useState } from "react";
 import ProgressBar from './ProgressBar/ProgressBar';
 import Button from './Button/Button';
 
+import useDelay from './utils/useDelay';
 import useProgressLoader from './utils/useProgressLoader';
 
 const INTERVAL = 100;
 
 const Solution = () => {
-  const [ isLoading, setILoading ] = useState(false);
-  const [ percentLoaded, setPercentLoaded ] = useState(0);
   const [ hasClickedFinish, setHasClickedFinish ] = useState(false);
+  const [ isComplete, setIsComplete ] = useState(false);
+  const [ isLoading, setILoading ] = useState(false);
   const [ isProgressBarVisible, setIsProgressBarVisible ] = useState(false);
+  const [ percentLoaded, setPercentLoaded ] = useState(0);
 
+  const { startDelay } = useDelay(setPercentLoaded);
   const { startLoader } = useProgressLoader(setPercentLoaded);
 
   const startRequest = () => {
@@ -20,7 +23,7 @@ const Solution = () => {
     setIsProgressBarVisible(true);
 
     startLoader({
-      duration: 1500,
+      duration: 15000,
       from: 0,
       interval: INTERVAL,
       to: 90,
@@ -36,11 +39,20 @@ const Solution = () => {
       interval: INTERVAL,
       to: 100,
       callback: () => {
+        setIsComplete(true);
         setILoading(false);
-        setHasClickedFinish(false);
-        setIsProgressBarVisible(false);
+
+        startDelay(3000, () => {
+          setIsProgressBarVisible(false)
+          startDelay(500, resetLoader);
+        });
       },
     });
+  };
+
+  const resetLoader = () => {
+    setHasClickedFinish(false);
+    setIsComplete(false);
   };
 
   return (
@@ -50,11 +62,13 @@ const Solution = () => {
         percent={percentLoaded}
       />
 
-      <Button
-        onClick={startRequest}
-        disabled={isLoading}
-        text={isLoading ? 'Loading...' : 'Start Request'}
-      />
+      {!isComplete && (
+        <Button
+          onClick={startRequest}
+          disabled={isLoading}
+          text={isLoading ? 'Loading...' : 'Start Request'}
+        />
+      )}
 
       {isLoading && !hasClickedFinish && (
         <Button

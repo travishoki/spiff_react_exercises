@@ -7,7 +7,7 @@ Custom Hook:
 - Reusable
 */
 
-const useProgressLoader = () => {
+const useAnimateValue = () => {
   const [ timer, setTimer ] = useState();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const useProgressLoader = () => {
     };
   }, [ timer ]);
 
-  const startLoader = ({
+  const startAnimate = ({
     callback,
     duration,
     from,
@@ -60,8 +60,8 @@ const useProgressLoader = () => {
   };
 
   return {
-    startLoader,
+    startAnimate,
   };
 };
 
-export default useProgressLoader;
+export default useAnimateValue;

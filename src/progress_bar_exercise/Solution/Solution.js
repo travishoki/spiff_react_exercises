@@ -4,7 +4,7 @@ import ProgressBar from './ProgressBar/ProgressBar';
 import Button from './Button/Button';
 
 import useDelay from './utils/useDelay';
-import useProgressLoader from './utils/useProgressLoader';
+import useAnimateValue from './utils/useAnimateValue';
 
 const INTERVAL = 100;
 
@@ -16,13 +16,13 @@ const Solution = () => {
   const [ percentLoaded, setPercentLoaded ] = useState(0);
 
   const { startDelay } = useDelay(setPercentLoaded);
-  const { startLoader } = useProgressLoader();
+  const { startAnimate } = useAnimateValue();
 
   const startRequest = () => {
     setILoading(true);
     setIsProgressBarVisible(true);
 
-    startLoader({
+    startAnimate({
       duration: 15000,
       from: 0,
       interval: INTERVAL,
@@ -34,7 +34,7 @@ const Solution = () => {
   const finishRequest = () => {
     setHasClickedFinish(true);
 
-    startLoader({
+    startAnimate({
       duration: 1000,
       from: percentLoaded,
       interval: INTERVAL,

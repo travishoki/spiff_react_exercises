@@ -16,7 +16,7 @@ const Solution = () => {
   const [ percentLoaded, setPercentLoaded ] = useState(0);
 
   const { startDelay } = useDelay(setPercentLoaded);
-  const { startLoader } = useProgressLoader(setPercentLoaded);
+  const { startLoader } = useProgressLoader();
 
   const startRequest = () => {
     setILoading(true);
@@ -27,6 +27,7 @@ const Solution = () => {
       from: 0,
       interval: INTERVAL,
       to: 90,
+      intervalCallback: setPercentLoaded,
     });
   };
 
@@ -38,6 +39,7 @@ const Solution = () => {
       from: percentLoaded,
       interval: INTERVAL,
       to: 100,
+      intervalCallback: setPercentLoaded,
       callback: () => {
         setIsComplete(true);
         setILoading(false);

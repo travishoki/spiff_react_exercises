@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 
+/*
+Custom Hook:
+- Triggers a callback after a given time interval
+- Clears the interval when the component unmounts
+- Reusable
+*/
+
 const useDelay = () => {
   const [ timer, setTimer ] = useState();
 

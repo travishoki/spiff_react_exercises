@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 
-const useProgressLoader = (setPercentCallback) => {
+/*
+Custom Hook:
+- Animates a value and returns the current value using a callback
+- Clears the interval when the component unmounts
+- Reusable
+*/
+
+const useProgressLoader = () => {
   const [ timer, setTimer ] = useState();
 
   useEffect(() => {
@@ -14,6 +21,7 @@ const useProgressLoader = (setPercentCallback) => {
     duration,
     from,
     interval,
+    intervalCallback,
     to,
   }) => {
     clearTimer();
@@ -24,7 +32,7 @@ const useProgressLoader = (setPercentCallback) => {
     let currentValue = from;
     let currentTime = 0;
 
-    setPercentCallback(from);
+    intervalCallback(from);
 
     const newTimer = setInterval(() => {
       const diff = to - currentValue;
@@ -34,7 +42,7 @@ const useProgressLoader = (setPercentCallback) => {
       } else {
         currentValue += PROGRESS_PER_TICK;
       }
-      setPercentCallback(currentValue);
+      intervalCallback(currentValue);
 
       currentTime += interval;
 

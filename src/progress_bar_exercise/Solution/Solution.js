@@ -14,13 +14,13 @@ const Solution = () => {
   const { startLoader } = useProgressLoader(setPercentLoaded);
 
   const startRequest = () => {
+    setILoading(true);
     startLoader({
       duration: 1500,
       from: 0,
       interval: INTERVAL,
       to: 90,
     });
-    setILoading(true);
   };
 
   const finishRequest = () => {
@@ -40,9 +40,10 @@ const Solution = () => {
       />
 
       <Button
-            onClick={startRequest}
-            text={isLoading ? 'Loading...' : 'Start Request'}
-        />
+        onClick={startRequest}
+        disabled={isLoading}
+        text={isLoading ? 'Loading...' : 'Start Request'}
+      />
 
       {isLoading && (
         <Button

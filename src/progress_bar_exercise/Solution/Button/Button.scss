@@ -1,4 +1,5 @@
 $green-color: #34c1a6;
+$grey: #ccc;
 
 .button {
   border: solid 1px $green-color;
@@ -9,11 +10,19 @@ $green-color: #34c1a6;
   padding: 10px;
   text-transform: uppercase;
 
-  &:hover {
-    border: solid 2px $green-color;
+  &:not(:disabled) {
+    &:hover {
+      border: solid 2px $green-color;
+    }
+  
+    &:active {
+      border: solid 3px $green-color;
+    }  
   }
 
-  &:active {
-    border: solid 3px $green-color;
+  &:disabled {
+    cursor: default;
+    border: solid 1px $grey;
+    color: $grey;
   }
 }

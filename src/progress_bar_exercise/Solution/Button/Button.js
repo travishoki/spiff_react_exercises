@@ -4,20 +4,29 @@ import PropTypes from 'prop-types';
 import './Button.scss';
 
 const Button = ({
-    onClick,
-    text,
+  disabled,
+  onClick,
+  text,
 }) => (
   <button 
     className="button"
-    onClick={onClick}
+    disabled={disabled}
+    onClick={() => {
+      if (!disabled) onClick();
+    }}
   >
     {text}
   </button>
 );
 
 Button.propTypes = {
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   text: PropTypes.string,
+};
+
+Button.defaultProps = {
+  disabled: false,
 };
 
 export default Button;

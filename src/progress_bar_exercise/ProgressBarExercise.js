@@ -34,7 +34,7 @@ const Solution = () => {
   const startRequest = () => {
     setILoading(true);
 
-    const LOADING_DURATION = 1000;
+    const LOADING_DURATION = 15000;
     const INTERVAL = 100;
     const GOAL_PERC = .9;
     const PROGRESS_PER_TICK = INTERVAL / LOADING_DURATION * GOAL_PERC * 100;

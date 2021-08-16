@@ -1,23 +1,41 @@
-$green-color: #34c1a6;
+$green: #34c1a6;
+$red: #FF0000;
 $grey: #ccc;
 
 .button {
-  border: solid 1px $green-color;
+  border: solid 1px $green;
   border-radius: 30px;
-  color: $green-color;
+  color: $green;
   font-size: 12px;
   margin-right: 10px;
   padding: 10px;
   text-transform: uppercase;
 
+  &.danger {
+    border: solid 1px $red;
+    color: $red;
+  }
+
   &:not(:disabled) {
-    &:hover {
-      border: solid 2px $green-color;
+    &.primary {
+      &:hover {
+        border: solid 2px $green;
+      }
+    
+      &:active {
+        border: solid 3px $green;
+      }  
     }
-  
-    &:active {
-      border: solid 3px $green-color;
-    }  
+
+    &.danger {
+      &:hover {
+        border: solid 2px $red;
+      }
+    
+      &:active {
+        border: solid 3px $red;
+      }  
+    }
   }
 
   &:disabled {

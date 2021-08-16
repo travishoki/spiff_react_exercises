@@ -7,9 +7,10 @@ const Button = ({
   disabled,
   onClick,
   text,
+  type,
 }) => (
   <button 
-    className="button"
+    className={`button ${type}`}
     disabled={disabled}
     onClick={() => {
       if (!disabled) onClick();
@@ -23,10 +24,12 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   text: PropTypes.string,
+  type: PropTypes.string,
 };
 
 Button.defaultProps = {
   disabled: false,
+  type: 'primary',
 };
 
 export default Button;

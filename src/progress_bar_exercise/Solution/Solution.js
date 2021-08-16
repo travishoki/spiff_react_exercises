@@ -66,8 +66,8 @@ const Solution = () => {
 
       {!isComplete && (
         <Button
-          onClick={startRequest}
           disabled={isLoading}
+          onClick={startRequest}
           text={isLoading ? 'Loading...' : 'Start Request'}
         />
       )}
@@ -76,6 +76,7 @@ const Solution = () => {
         <Button
           onClick={finishRequest}
           text="Finish Request"
+          type="danger"
         />
         )}
     </div>

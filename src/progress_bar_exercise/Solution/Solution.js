@@ -11,11 +11,13 @@ const Solution = () => {
   const [ isLoading, setILoading ] = useState(false);
   const [ percentLoaded, setPercentLoaded ] = useState(0);
   const [ hasClickedFinish, setHasClickedFinish ] = useState(false);
+  const [ isProgressBarVisible, setIsProgressBarVisible ] = useState(false);
 
   const { startLoader } = useProgressLoader(setPercentLoaded);
 
   const startRequest = () => {
     setILoading(true);
+    setIsProgressBarVisible(true);
 
     startLoader({
       duration: 1500,
@@ -36,6 +38,7 @@ const Solution = () => {
       callback: () => {
         setILoading(false);
         setHasClickedFinish(false);
+        setIsProgressBarVisible(false);
       },
     });
   };
@@ -43,6 +46,7 @@ const Solution = () => {
   return (
     <div>
       <ProgressBar
+        isVisible={isProgressBarVisible}
         percent={percentLoaded}
       />
 
